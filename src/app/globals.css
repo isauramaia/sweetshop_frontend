@@ -1,4 +1,42 @@
 
-body{
+
+body {
     background: white;
 }
+
+table{
+    width: 100%;
+    table-layout: fixed;
+    min-width: 1000px;
+    border-collapse: collapse;
+}
+
+thead th{
+    position: sticky;
+    top: 0;
+    color: #666;
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+
+}
+
+th, td{
+    border-bottom: 1px solid #dddddddd;
+    padding: 10px 20px;
+    word-break: break-all;
+    text-align: center;
+    color: #202020;
+
+    font-family: Quicksand;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+}
+
+tr:hover td{
+    background-color: #F6F5F2;
+}
+    

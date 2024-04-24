@@ -17,7 +17,7 @@ export default function SideBar() {
             <div className={style.listSideBar}>
                 <div className={style.item}>
                     <Image className={style.itemImage} src={"/assets/iconProductsGrey.svg"} width={24} height={24}/>
-                    <span>Produtos</span>
+                    <span>Gerenciamento</span>
                 </div>
                 <div className={style.item}>
                     <Image src={"/assets/iconProductsGrey.svg"} width={24} height={24}/>

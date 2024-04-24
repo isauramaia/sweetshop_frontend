@@ -69,4 +69,21 @@
     justify-content: flex-end;
     margin-right: 88px;
     margin-top: 21px;
+    padding-bottom: 44px;
+}
+
+.tableSection{
+    height: 650px;
+    overflow: auto;
+}
+
+.actionButton{
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.filterButton{
+    background: none;
 }
