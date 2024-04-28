@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@100&family=Quicksand:wght@300..700&display=swap');
+
+.mainContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.containerContent{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+}
+
+.mainButton{
+    appearance: none; /* Remove os estilos padrão do botão */
+    border: none; /* Remove a borda padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    margin: 0; /* Remove a margem padrão */
+    width: 220px;
+    padding: 8px;
+    border-radius: 5px;
+    background: #D9798B;
+    font-family: Quicksand;
+}
+

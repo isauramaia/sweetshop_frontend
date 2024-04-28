@@ -1,13 +1,26 @@
+'use client'
+
 import Image from 'next/image';
 import style from './sidebar.module.css'
+import { useRouter } from 'next/navigation';
+
 
 export default function SideBar() {
+
+   const router = useRouter();
+
+   const openPageLoja = () => {
+    router.push("/loja");
+   }
+
+   const openPageGerenciamento = () => {
+    router.push("/gerenciamento");
+   }
 
     return(
 
         <div className={style.sideBar}>
             <Image 
-                className={style.logo}
                 src={"/assets/logo.svg"}
                 width={273}
                 height={108}
@@ -15,14 +28,19 @@ export default function SideBar() {
             />
 
             <div className={style.listSideBar}>
-                <div className={style.item}>
+
+                <button className={style.item} onClick={openPageGerenciamento}>
                     <Image className={style.itemImage} src={"/assets/iconProductsGrey.svg"} width={24} height={24}/>
                     <span>Gerenciamento</span>
-                </div>
-                <div className={style.item}>
-                    <Image src={"/assets/iconProductsGrey.svg"} width={24} height={24}/>
-                    <span>Produtos</span>
-                </div>
+                </button>
+                
+
+                <button className={style.item} onClick={openPageLoja}>
+                    <Image className={style.itemImage} src={"/assets/iconStore.svg"} width={24} height={24}/>
+                    <span>Loja</span>
+                    
+                </button>
+                
 
             </div>
         </div>        
