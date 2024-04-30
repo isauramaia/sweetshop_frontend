@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@100&family=Quicksand:wght@300..700&display=swap');
 
-.containerPages{
+.containerPages {
     display: flex;
     width: 100vw;
     height: 100vh;
     font-family: Quicksand, sans-serif;
 }
 
-.mainPage{
+.mainPage {
     height: 100vh;
     margin-left: 300px;
     margin-right: 56px;
 }
 
-.header{
+.header {
     height: 105px;
     border-bottom: 0.1px solid #F2DFCE;
 }
 
-.headerContent{
+.headerContent {
     display: flex;
     align-items: center;
     gap: 163px;
@@ -26,7 +26,7 @@
     margin-left: 42px;
 }
 
-.searchingBar{
+.searchingBar {
     border: none;
     background: none;
     margin-left: 15px;
@@ -37,11 +37,11 @@
     width: 225px;
 }
 
-.searchingBar:focus{
+.searchingBar:focus {
     outline: none;
 }
 
-.searchHeader{
+.searchHeader {
     display: flex;
     align-items: center;
     background: #F5F9FD;
@@ -50,7 +50,7 @@
     border-radius: 104px;
 }
 
-.buttonNewProduct{
+.buttonNewProduct {
     background: #D9798B;
     display: flex;
     align-items: center;
@@ -59,14 +59,14 @@
     border-radius: 100px;
 }
 
-.labelButtonNewProduct{
+.labelButtonNewProduct {
     color: white;
     font-family: Quicksand, sans-serif;
     font-size: 14px;
     font-weight: 400;
 }
 
-.containerButton{
+.containerButton {
     display: flex;
     justify-content: flex-end;
     margin-right: 88px;
@@ -74,19 +74,23 @@
     padding-bottom: 44px;
 }
 
-.tableSection{
+.tableSection {
     height: 650px;
     overflow: auto;
 }
 
-.actionButton{
+.actionButton {
     outline: none;
     border: none;
     cursor: pointer;
     background: none;
 }
 
-.filterButton{
+.filterButton {
     background: none;
 }
 
+.buttonDelete {
+    display: flex;
+    justify-content: center;
+}
