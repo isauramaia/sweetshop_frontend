@@ -11,8 +11,12 @@ export default function Initial(){
         router.push("/loja");
     }
     
-    const openPageGerenciamento = () => {
-        router.push("/gerenciamento");
+    const openPageLogin = () => {
+        router.push("/login");
+    }
+
+    const openPageCadastro = () => {
+        router.push("/cadastro");
     }
 
     return(
@@ -29,13 +33,21 @@ export default function Initial(){
                     alt={"Logo Sugar bliss"}
                 />
 
-                <button className={style.mainButton} onClick={openPageGerenciamento} >
-                    Entrar como admin
+                <button className={style.mainButton} onClick={openPageLoja}>
+                    Continuar sem login
                 </button>
 
-                <button className={style.mainButton} onClick={openPageLoja}>
-                    Entrar como cliente
+                <button className={style.mainButton} onClick={openPageCadastro} >
+                    Cadastrar
                 </button>
+
+                <button className={style.mainButton} onClick={openPageLogin} >
+                    Entrar
+                </button>
+
+                
+
+                
 
             </div>
 

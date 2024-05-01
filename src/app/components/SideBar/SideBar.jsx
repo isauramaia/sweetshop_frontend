@@ -9,11 +9,11 @@ export default function SideBar() {
 
    const router = useRouter();
 
-   const openPageLoja = () => {
-    router.push("/loja");
+   const openPagePedidos = () => {
+    router.push("/pedidos");
    }
 
-   const openPageGerenciamento = () => {
+   const openPageGerenciamentoProdutos = () => {
     router.push("/gerenciamento");
    }
 
@@ -29,15 +29,15 @@ export default function SideBar() {
 
             <div className={style.listSideBar}>
 
-                <button className={style.item} onClick={openPageGerenciamento}>
+                <button className={style.item} onClick={openPageGerenciamentoProdutos}>
                     <Image className={style.itemImage} src={"/assets/iconProductsGrey.svg"} width={24} height={24}/>
-                    <span>Gerenciamento</span>
+                    <span>Produtos</span>
                 </button>
                 
 
-                <button className={style.item} onClick={openPageLoja}>
+                <button className={style.item} onClick={openPagePedidos}>
                     <Image className={style.itemImage} src={"/assets/iconStore.svg"} width={24} height={24}/>
-                    <span>Loja</span>
+                    <span>Pedidos</span>
                     
                 </button>
                 

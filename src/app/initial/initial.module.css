@@ -17,17 +17,79 @@
 
 .mainButton{
     appearance: none; /* Remove os estilos padrão do botão */
-    border: none; /* Remove a borda padrão */
-    padding: 0; /* Remove o preenchimento padrão */
+    border: none; /* Remove a borda padrão *//* Remove o preenchimento padrão */
     margin: 0; /* Remove a margem padrão */
     width: 220px;
     padding: 8px;
     border-radius: 5px;
     background:  #f5f5f5;
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
 }
 
 .letra{
-    font-family: Quicksand;
+    font-family: Quicksand, sans-serif;
     font-size: 14px;
 }
+
+.containerAddProduct {
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-family: Quicksand, sans-serif;
+    font-size: 14px;
+  }
+
+  .inputInfo {
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .inputInfo:focus {
+    outline: none;
+  }
+
+  .logo{
+    margin: 35px 8px 16px 8px;
+}
+
+.containerLogin {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerInputInfo {
+    border-radius: 5px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    font-family: Quicksand, sans-serif;
+    font-size: 14px;
+  }
+
+  .submitInfo {
+    width: 200px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitInfo:hover {
+    background-color: #45a049;
+  }
+
+  .buttonCadastroContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

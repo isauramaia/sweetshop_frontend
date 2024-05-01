@@ -27,7 +27,7 @@ const ModalAddProduct = ({ onClose }) => {
             <label >Descrição</label>
             <input  type="text" className={style.inputInfo}  />
 
-            <label >Valor</label>
+            <label >Valor (R$)</label>
             <input  type="text" className={style.inputInfo} />
 
             <label >Quantidade no estoque</label>

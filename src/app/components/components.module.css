@@ -48,6 +48,8 @@
   display: flex;
   align-items: center;
   font-size: 18px;
+  
+  font-weight: bolder;
 }
 
 .buttonViewModal {
@@ -126,4 +128,23 @@
 .letra {
   font-family: Quicksand;
   font-size: 14px;
+}
+
+.containerProductData{
+  
+  margin-top: 15px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 250px 250px;
+  width: 500px;
+  justify-content: space-between;
+  gap: 25px;
+  align-items: start;
+  text-align: left;
+}
+
+.infoProduct{
+  font-size: 15px;
+  color: black;
+  text-align: left;
 }
