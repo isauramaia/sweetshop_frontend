@@ -17,6 +17,10 @@ export default function NavBarComponent() {
         route.push("/payment");
     }
 
+    const goToMyProfile = () => {
+        route.push("/profile");
+    }
+
     const productsCount = cart.items.reduce((sum, product) => sum + product.quantity, 0);
 
     return (
@@ -26,7 +30,9 @@ export default function NavBarComponent() {
                 <NavbarToggle />
                 <NavbarCollapse className="justify-content-end">
                     <Button className={style.buttonColor} onClick={handleShow}>{productsCount} itens no carrinho</Button>
+                    <Button className={style.buttonMyProfile} onClick={goToMyProfile}>Meu perfil</Button>
                 </NavbarCollapse>
+                
 
             </Navbar>
             <Modal show={show} onHide={handleClose}>

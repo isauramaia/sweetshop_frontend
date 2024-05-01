@@ -1,0 +1,45 @@
+.sideBar{
+    border-right: 0.1px solid #F2DFCE;
+    position:fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 12px;
+    width: 270px;
+}
+
+.logo{
+    margin: 35px 8px 16px 8px;
+}
+
+.listSideBar{
+    display: inline-flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.item{
+    
+    appearance: none; /* Remove os estilos padrão do botão */
+    border: none; /* Remove a borda padrão */
+    background-color: transparent; /* Remove o plano de fundo padrão */
+    padding: 0; /* Remove o preenchimento padrão */
+    margin: 0; /* Remove a margem padrão */
+       
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 30px;
+    cursor: pointer;
+    color: #8B8B8B;
+
+    font-family: Quicksand;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.item :hover{
+    color: #D9798B;
+}

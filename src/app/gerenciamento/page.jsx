@@ -1,11 +1,10 @@
 'use client'
 
 import Image from "next/image";
-
+import { useState, useEffect } from "react";
 import style from './gerenciamento.module.css'
 import SideBar from "../components/SideBar/SideBar";
 import ModalDeleteProduct from "../components/ModalDeleteProduct";
-import { useState } from "react";
 import ModalViewProduct from "../components/ModalViewProduct";
 import ModalAddProduct from "../components/ModalAddProduct";
 
@@ -14,6 +13,19 @@ export default function Gerenciamento() {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [showAddProductModal, setShowAddProductModal] = useState(false);
+    const [produtos, setProdutos] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/produtos')
+            .then(response => response.json())
+            .then(data => {
+                // Define os dados recebidos do servidor no estado produtos
+                setProdutos(data);
+            })
+            .catch(error => {
+                console.error('Erro ao obter produtos:', error);
+            });
+    }, []);
 
     const handleDeleteModalOpen = () => {
         setShowDeleteModal(true);
@@ -35,14 +47,11 @@ export default function Gerenciamento() {
         setShowAddProductModal(true);
     }
 
-
     const handleAddProductModalClose = () => {
         setShowAddProductModal(false);
     }
 
-
     return (
-
         <div className={style.containerPages}>
             <SideBar />
             <div className={style.mainPage}>
@@ -58,12 +67,11 @@ export default function Gerenciamento() {
                 </div>
                 <div className={style.mainContent}>
                     <div className={style.containerButton}>
-
                         <button type="submit" className={style.buttonNewProduct} onClick={handleAddProductModalOpen}>
                             <Image src={"/assets/iconAdd.svg"} width={16} height={16} />
                             <span className={style.labelButtonNewProduct}>Novo produto</span>
                         </button>
-                        {showAddProductModal && < ModalAddProduct onClose={handleAddProductModalClose} />}
+                        {showAddProductModal && <ModalAddProduct onClose={handleAddProductModalClose} />}
                     </div>
                     <div className={style.tableSection}>
                         <table>
@@ -76,25 +84,23 @@ export default function Gerenciamento() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bolo</td>
-                                    <td>24,90</td>
-                                    <td>2</td>
-                                    <td>
-                                        <button className={style.actionButton} onClick={handleViewModalOpen}><Image src={"/assets/iconView.svg"} width={24} height={24} /></button>
-                                        {showViewModal && < ModalViewProduct onClose={handleViewModalClose} />}
-                                        <button className={style.actionButton}><Image src={"/assets/iconEdit.svg"} width={22} height={24} /></button>
-                                        <button type="button" className={style.actionButton} onClick={handleDeleteModalOpen}><Image src={"/assets/iconDelete.svg"} width={24} height={24} /></button>
-                                        {showDeleteModal && < ModalDeleteProduct onClose={handleDeleteModalClose} />}
-                                    </td>
-                                </tr>
-
+                                {/* Mapeia os produtos recebidos do estado e renderiza cada um deles */}
+                                {produtos.map((produto, index) => (
+                                    <tr key={index}>
+                                        <td>{produto.nome_P}</td>
+                                        <td>{produto.valor_P}</td>
+                                        <td>{produto.quantidade_P}</td>
+                                        <td>
+                                            <button className={style.actionButton} onClick={handleViewModalOpen}><Image src={"/assets/iconView.svg"} width={24} height={24} /></button>
+                                            {showViewModal && <ModalViewProduct onClose={handleViewModalClose} />}
+                                            <button type="button" className={style.actionButton} onClick={handleDeleteModalOpen}><Image src={"/assets/iconDelete.svg"} width={24} height={24} /></button>
+                                            {showDeleteModal && <ModalDeleteProduct onClose={handleDeleteModalClose} />}
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
-
                         </table>
-
                     </div>
-
                 </div>
             </div>
         </div>

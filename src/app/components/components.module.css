@@ -148,3 +148,14 @@
   color: black;
   text-align: left;
 }
+
+.buttonMyProfile{
+  background-color: #D9798B;
+  border: none;
+  margin-left: 26px;
+}
+
+.buttonMyProfile:hover {
+  background-color: #F05E81;
+  border: none;
+}
