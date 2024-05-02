@@ -5,41 +5,24 @@ import Image from "next/image";
 import style from '../gerenciamento/gerenciamento.module.css'
 import SideBar from "../components/SideBar/SideBar";
 import ModalDeleteProduct from "../components/ModalDeleteProduct";
-import { useState } from "react";
-import ModalViewProduct from "../components/ModalViewProduct";
-import ModalAddProduct from "../components/ModalAddProduct";
+import { useEffect, useState } from "react";
 
 export default function Pedidos() {
 
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showViewModal, setShowViewModal] = useState(false);
-    const [showAddProductModal, setShowAddProductModal] = useState(false);
+    const [pedidos, setPedidos] = useState([]);
 
-    const handleDeleteModalOpen = () => {
-        setShowDeleteModal(true);
-    };
+    useEffect(() => {
+        fetch('http://localhost:5000/pedidos')
+            .then(response => response.json())
+            .then(data => {
 
-    const handleDeleteModalClose = () => {
-        setShowDeleteModal(false);
-    };
+                setPedidos(data);
 
-    const handleViewModalOpen = () => {
-        setShowViewModal(true);
-    };
-
-    const handleViewModalClose = () => {
-        setShowViewModal(false);
-    };
-
-    const handleAddProductModalOpen = () => {
-        setShowAddProductModal(true);
-    }
-
-
-    const handleAddProductModalClose = () => {
-        setShowAddProductModal(false);
-    }
-
+            })
+            .catch(error => {
+                console.error('Erro ao obter produtos:', error);
+            });
+    }, []);
 
     return (
 
@@ -69,22 +52,33 @@ export default function Pedidos() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td>456</td>
-                                    <td>Julia</td>
-                                    <td>Pix</td>
-                                    <td>22/04/2001</td>
-                                    <td>25,90</td>
-                                    <td>
-                                        <select>
-                                            <option value="0">Pendente</option>
-                                            <option value="1">Concluido</option>
-                                        </select>
-                                    </td>
+                                {pedidos.map((pedido, index) => (
+                                    <tr key={index}>
+                                        <td>{pedido.id_Ped}</td>
+                                        <td>{pedido.id_funcionario}</td>
+                                        <td>{pedido.id_clientes}</td>
+                                        <td>{pedido.metodo_pagamento}</td>
+                                        <td>{pedido.data}</td>
+                                        <td>{pedido.valor_total}</td>
+                                        <td>
+                                            <select>
+                                                {pedido.status === "Pendente" ? (
+                                                    <>
+                                                        <option value="0">Pendente</option>
+                                                        <option value="1">Aprovado</option>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="0">Pendente</option>
+                                                    </>
+                                                )}
+                                            </select>
+                                        </td>
+                                    </tr>
+                                ))}
 
-                                </tr>
-                                
+
 
                             </tbody>
 

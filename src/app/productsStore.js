@@ -18,47 +18,7 @@ const productsArray = [
         price: 10.99
     },
 
-    // {
-    //     id: "4",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "5",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "3",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "3",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "3",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "3",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // },
-
-    // {
-    //     id: "3",
-    //     title: "Torta alemã",
-    //     price: 10.99
-    // }
+   
 
 ]
     

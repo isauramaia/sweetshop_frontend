@@ -10,7 +10,6 @@ import ModalAddProduct from "../components/ModalAddProduct";
 
 export default function Gerenciamento() {
 
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [showAddProductModal, setShowAddProductModal] = useState(false);
     const [produtos, setProdutos] = useState([]);
@@ -19,28 +18,37 @@ export default function Gerenciamento() {
         fetch('http://localhost:5000/produtos')
             .then(response => response.json())
             .then(data => {
-                // Define os dados recebidos do servidor no estado produtos
+                
                 setProdutos(data);
+
             })
             .catch(error => {
                 console.error('Erro ao obter produtos:', error);
             });
     }, []);
 
-    const handleDeleteModalOpen = () => {
-        setShowDeleteModal(true);
+    const [selectedProductId, setSelectedProductId] = useState(null);
+
+    const[productIdSelected, setProductIdSelected] = useState(null)
+
+    
+    const handleDeleteModalOpen = (productId) => {
+        setSelectedProductId(productId);
     };
 
+    
     const handleDeleteModalClose = () => {
-        setShowDeleteModal(false);
+        setSelectedProductId(null);
     };
 
-    const handleViewModalOpen = () => {
-        setShowViewModal(true);
+
+
+    const handleViewModalOpen = (productId) => {
+        setProductIdSelected(productId);
     };
 
     const handleViewModalClose = () => {
-        setShowViewModal(false);
+        setProductIdSelected(null);
     };
 
     const handleAddProductModalOpen = () => {
@@ -84,17 +92,27 @@ export default function Gerenciamento() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* Mapeia os produtos recebidos do estado e renderiza cada um deles */}
+
                                 {produtos.map((produto, index) => (
+
                                     <tr key={index}>
                                         <td>{produto.nome_P}</td>
                                         <td>{produto.valor_P}</td>
+
                                         <td>{produto.quantidade_P}</td>
+
                                         <td>
-                                            <button className={style.actionButton} onClick={handleViewModalOpen}><Image src={"/assets/iconView.svg"} width={24} height={24} /></button>
-                                            {showViewModal && <ModalViewProduct onClose={handleViewModalClose} />}
-                                            <button type="button" className={style.actionButton} onClick={handleDeleteModalOpen}><Image src={"/assets/iconDelete.svg"} width={24} height={24} /></button>
-                                            {showDeleteModal && <ModalDeleteProduct onClose={handleDeleteModalClose} />}
+                                            {productIdSelected === produto.id_Prod && (
+                                                <ModalViewProduct onClose={handleViewModalClose} idProduct={produto.id_Prod}  />
+                                            )}
+                                            <button className={style.actionButton} onClick={() => handleViewModalOpen(produto.id_Prod)}><Image src={"/assets/iconView.svg"} width={24} height={24} /></button>
+                                            
+
+                                            {selectedProductId === produto.id_Prod && (
+                                                <ModalDeleteProduct onClose={handleDeleteModalClose} idProduct={produto.id_Prod} />
+                                            )}
+                                            <button type="button" className={style.actionButton} onClick={() => handleDeleteModalOpen(produto.id_Prod)}><Image src={"/assets/iconDelete.svg"} width={24} height={24} /></button>
+
                                         </td>
                                     </tr>
                                 ))}
