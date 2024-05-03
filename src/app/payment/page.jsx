@@ -8,8 +8,7 @@ export default function Payment(){
     const cart = useContext(CartContext);
     return(
         <div>
-            <h1>Total: R$ {cart.getTotalCost()}</h1>
-            <p>ola pagamentos</p>
+            <p>oi</p>
         </div>
     )
 }

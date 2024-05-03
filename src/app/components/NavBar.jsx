@@ -5,7 +5,7 @@ import { CartContext } from "../CartContext";
 import CartProduct from "./CartProduct";
 import { useRouter } from "next/navigation";
 
-export default function NavBarComponent() {
+export default function NavBarComponent({produtos}) {
     const route = useRouter();
     const cart = useContext(CartContext);
 
@@ -46,9 +46,9 @@ export default function NavBarComponent() {
 
                             <p>Itens no seu carrinho:</p>
                             {cart.items.map((currentProduct, idx) => (
-                                <CartProduct key={idx} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
+                                <CartProduct produtos={produtos} key={idx} id={currentProduct.id} quantity={currentProduct.quantity}></CartProduct>
                             ))}
-                            <h1>Total: R$ {cart.getTotalCost().toFixed(2)}</h1>
+                            <h1>Total: R$ {cart.getTotalCost(produtos).toFixed(2)}</h1>
 
                             <Button variant="success" onClick={goToPaymentPage}>
                                 Ir para pagamento

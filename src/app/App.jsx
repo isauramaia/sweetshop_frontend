@@ -14,7 +14,7 @@ function App(){
     return(
         <CartProvider>
             <Container>
-            <NavBarComponent></NavBarComponent>
+            <NavBarComponent/>
             <BrowserRouter>
                 <Routes>
                     <Route index element ={<Initial/>} />

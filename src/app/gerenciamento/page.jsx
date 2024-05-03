@@ -14,34 +14,24 @@ export default function Gerenciamento() {
     const [showAddProductModal, setShowAddProductModal] = useState(false);
     const [produtos, setProdutos] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/produtos')
-            .then(response => response.json())
-            .then(data => {
-                
-                setProdutos(data);
+    
 
-            })
-            .catch(error => {
-                console.error('Erro ao obter produtos:', error);
-            });
-    }, []);
+    const [search, setSearch] = useState("");
 
     const [selectedProductId, setSelectedProductId] = useState(null);
 
-    const[productIdSelected, setProductIdSelected] = useState(null)
+    const[productIdSelected, setProductIdSelected] = useState(null);
 
+    // const[ produtosQuantidade, setProdutosQuantidade] = useState([]);
     
+
     const handleDeleteModalOpen = (productId) => {
         setSelectedProductId(productId);
     };
-
     
     const handleDeleteModalClose = () => {
         setSelectedProductId(null);
     };
-
-
 
     const handleViewModalOpen = (productId) => {
         setProductIdSelected(productId);
@@ -59,6 +49,38 @@ export default function Gerenciamento() {
         setShowAddProductModal(false);
     }
 
+    const handleSearch = (valor) => {
+        setSearch(valor.target.value);
+    }
+
+    const handleFilter = () => {
+        
+            fetch(`http://localhost:5000/produtos/buscar_por_quantidade?qtd_max=5`)
+                        .then(response => response.json())
+                        .then(data => {
+                            
+                            setProdutos(data);
+                        })
+                        .catch(error => {
+                            console.error('Erro ao obter produtos:', error);
+                        });
+                
+    }
+    
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/produtos/buscar?nome=${search}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        
+                        setProdutos(data);
+        
+                    })
+                    .catch(error => {
+                        console.error('Erro ao obter produtos:', error);
+                    });
+            }, [search]);
+
     return (
         <div className={style.containerPages}>
             <SideBar />
@@ -68,8 +90,8 @@ export default function Gerenciamento() {
                         <span>Gerenciamento de produtos</span>
                         <div className={style.searchHeader}>
                             <Image src={"/assets/iconSearch.svg"} width={20} height={20} />
-                            <input placeholder="Buscar" type="text" className={style.searchingBar}></input>
-                            <button className={style.filterButton}><Image src={"/assets/iconFilter.svg"} width={20} height={20} /></button>
+                            <input onChange={handleSearch} value={search} placeholder="Buscar" type="text" className={style.searchingBar}></input>
+                            <button className={style.filterButton} onClick={handleFilter}><Image src={"/assets/iconFilter.svg"} width={20} height={20} /></button>
                         </div>
                     </div>
                 </div>

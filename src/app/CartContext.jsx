@@ -78,11 +78,14 @@ export function CartProvider({children}) {
         }
     }
 
-    function getTotalCost() {
+    function getTotalCost(produtos) {
+        console.log("produtos", produtos);
         let totalCost = 0;
         cartProducts.map((cartItem) => {
-            const productData = getProductsData(cartItem.id);
-            totalCost += (productData.price * cartItem.quantity);
+            console.log("cartitem", cartItem)
+            const productData = produtos.find(product => product.id_Prod == cartItem.id);
+            console.log("productdata", productData);
+            totalCost += (productData.valor_P * cartItem.quantity);
         })
         return totalCost;
     }
